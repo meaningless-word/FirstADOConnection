@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
@@ -29,6 +30,18 @@ namespace ClassLibrary
 			if (connection.State == ConnectionState.Open)
 			{
 				await connection.CloseAsync();
+			}
+		}
+
+		public SqlConnection GetConnection()
+		{
+			if (connection.State == ConnectionState.Open)
+			{
+				return connection;
+			}
+			else
+			{
+				throw new Exception("Подключение уже закрыто!");
 			}
 		}
 	}
