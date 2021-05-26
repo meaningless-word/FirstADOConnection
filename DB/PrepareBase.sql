@@ -23,3 +23,20 @@ Login
 values
 ('admin', 'admin'),
 ('Тест Тестович', 'test')
+go
+
+-- Напишите процедуру SQL AddingUserProc с параметрами Name и Login, которая добавляет запись в таблицу NetworkUser.
+create procedure AddingUserProc (
+  @Name varchar(max)
+, @Login varchar(20)
+)
+AS
+BEGIN
+
+  insert into NetworkUser (
+	Name
+  , Login
+  )
+  Values
+    (@Name, @Login)
+END
